@@ -1,0 +1,12 @@
+package com.cos.blog.test;
+
+import org.springframework.boot.SpringApplication;
+
+@SpringBootApplication
+public class DemoApplication {
+	public static void main(String[] args) throws IOException {
+		SpringApplication.run(DemoApplication.class, args);
+		System.out.println( System.getProperty("user.dir") );
+		// D:\workspace\demo
+	}
+}

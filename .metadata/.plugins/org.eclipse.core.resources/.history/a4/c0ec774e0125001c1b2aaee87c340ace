@@ -1,0 +1,26 @@
+package com.cos.blog.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Entity
+
+public class Reply {
+	@id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	
+	@Column(nullable = false, length = 200)
+	private String comment;
+}
