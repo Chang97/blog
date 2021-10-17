@@ -9,6 +9,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 
 import com.cos.blog.config.auth.PrincipalDetailService;
 
@@ -36,11 +38,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
-		http.csrf().disable() // csrf 토큰 비활성화 (테스트시 걸어두는게 좋음)
-				.authorizeRequests().antMatchers("/", "/auth/**", "/js/**", "/css/**", "/image/**").permitAll()
-				.anyRequest().authenticated().and().formLogin().loginPage("/auth/loginForm")
-				.loginProcessingUrl("/auth/loginProc")// 스프링 시큐리티가 해당 주소로 요청오는 로그인을 가로챔
-				.defaultSuccessUrl("/"); // 로그인 성공시 url
+		http
+		.csrf().disable()  // csrf 토큰 비활성화 (테스트시 걸어두는 게 좋음)
+		.authorizeRequests()
+			.antMatchers("/", "/auth/**", "/js/**", "/css/**", "/image/**", "/dummy/**") 
+			.permitAll()
+			.anyRequest()
+			.authenticated()
+		.and()
+			.formLogin()
+			.loginPage("/auth/loginForm")
+			.loginProcessingUrl("/auth/loginProc")// 스프링 시큐리티가 해당 주소로 요청오는 로그인을 가로챔
+			.defaultSuccessUrl("/"); // 로그인 성공시 url
 
 	}
 }
+

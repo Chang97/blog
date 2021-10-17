@@ -37,7 +37,7 @@ public class User {
 	@Column(nullable = false, length=30, unique = true)
 	private String username; //아이디
 	
-	@Column(nullable = false, length=100)
+	@Column(nullable = false, length=300)
 	private String password; //해쉬로 암호화 하기 떄문에 넉넉하게 작성
 	
 	@Column(nullable = false, length=50)
