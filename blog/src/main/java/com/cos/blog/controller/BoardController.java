@@ -30,6 +30,12 @@ public class BoardController {
 		return "index"; //viewResolver 작동 : 페이지 이동하며 모델 같이보냄
 	}
 	
+	@GetMapping("/board/{id}/updateForm")
+	public String updateFrom(@PathVariable int id, Model model) {
+		model.addAttribute("board", boardService.글상세보기(id));
+		return "board/updateForm";
+	}
+	
 	@GetMapping({"board/saveForm"})
 	public String saveForm() {
 		// /WEB-INF/views/index.jsp
