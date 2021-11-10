@@ -10,9 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.DynamicInsert;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -47,6 +45,8 @@ public class User {
 	// DB는 RoleType이 없다.
 	@Enumerated(EnumType.STRING)
 	private RoleType role; //enum 사용하는게 좋음.//admin, user
+	
+	private String oauth; //kakao, google
 	
 	@CreationTimestamp //시간이 자동으로 입력
 	private Timestamp createDate;

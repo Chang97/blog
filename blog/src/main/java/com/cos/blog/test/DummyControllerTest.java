@@ -7,7 +7,6 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -74,7 +73,6 @@ public class DummyControllerTest {
 	//한페이지당 2건에 데이터를 리턴받아 볼 예정
 	@GetMapping("dummy/user")
 	public List<User> pageList(@PageableDefault(size = 2, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
-		Page<User> pagingUser = userRepository.findAll(pageable);
 		List<User> users = userRepository.findAll(pageable).getContent();
 		return users;
 	}
